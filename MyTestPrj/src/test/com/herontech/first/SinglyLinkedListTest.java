@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.herontech.first.SinglyLinkedList;
+import com.herontech.first.SinglyLinkedListImpl;
+
 public class SinglyLinkedListTest {
 
 	static SinglyLinkedList<Integer> sl = new SinglyLinkedListImpl<Integer>();
