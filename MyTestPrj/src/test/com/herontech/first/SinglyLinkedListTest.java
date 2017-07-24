@@ -18,32 +18,36 @@ public class SinglyLinkedListTest {
 		sl.add(32);
 		sl.add(54);
 		sl.add(89);
-
 	}
 
 	@Test
 	public void testAdd() {
-		assertFalse(sl.isEmpty());
-
+		assertFalse(sl.isEmpty()); // linked list should not be empty
 	}
 
 	@Test
 	public void testTraverse() {
-		sl.traverse();
-		System.out.println(sl.getHead().getNextRef().getValue());
-		System.out.println(sl.getHead().getValue());
-		assertEquals(new Integer(3), sl.getHead().getValue() ); 
-		assertEquals(new Integer(32), sl.getHead().getNextRef().getValue() ); 
+		try {
+			sl.traverse();
+			assertEquals(new Integer(3), sl.getHead().getValue()); //get the first integer 
+			assertEquals(new Integer(32), sl.getHead().getNextRef().getValue()); //get the next integer
+		} catch (ObjectNotFoundException e) {
+			fail(e.getMessage());
+		}
+		
 	}
 
 	@Test
 	public void testReverse() {
-		sl.reverse();
-		System.out.println(sl.getHead().getNextRef().getValue());
-		System.out.println(sl.getHead().getValue());
-		assertEquals(new Integer(89), sl.getHead().getValue() ); 
-		assertEquals(new Integer(54), sl.getHead().getNextRef().getValue() ); 
-		sl.reverse();
+		try {
+			sl.reverse(); // reverse the list 
+			assertEquals(new Integer(89), sl.getHead().getValue()); // the lsst will be first
+			assertEquals(new Integer(54), sl.getHead().getNextRef().getValue()); // the second to last will be second
+			sl.reverse(); // reverse the reversed list for next test
+		} catch (SinglyLinkedListException e) {
+			fail(e.getMessage());
+		}
+		
 	}
 
 }

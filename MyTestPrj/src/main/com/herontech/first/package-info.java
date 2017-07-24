@@ -1,8 +1,8 @@
 /**
- * test package for sun style
+ * test package with google style
  */
 /**
  * @author garfield
- *
+ * 
  */
 package com.herontech.first;

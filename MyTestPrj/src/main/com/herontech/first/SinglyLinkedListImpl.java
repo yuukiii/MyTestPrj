@@ -5,7 +5,7 @@ package com.herontech.first;
 
 /**
  * @author garfield
- *
+ * 
  */
 public class SinglyLinkedListImpl<T> implements SinglyLinkedList<T> {
 
@@ -51,13 +51,13 @@ public class SinglyLinkedListImpl<T> implements SinglyLinkedList<T> {
 	 * @see com.herontech.first.SinglyLinkedList#traverse()
 	 */
 	@Override
-	public void traverse() {
+	public void traverse() throws ObjectNotFoundException{
 
 		Node<T> tmp = head;
-		while (true) {
-			if (tmp == null) {
-				break;
-			}
+		if (tmp == null) {
+			throw new ObjectNotFoundException(); 
+		}
+		while (tmp!=null) {
 			System.out.print(tmp.getValue() + "\t");
 			tmp = tmp.getNextRef();
 		}
@@ -69,12 +69,15 @@ public class SinglyLinkedListImpl<T> implements SinglyLinkedList<T> {
 	 * @see com.herontech.first.SinglyLinkedList#reverse()
 	 */
 	@Override
-	public void reverse() {
+	public void reverse() throws SinglyLinkedListException {
 
 		System.out.println("\nreversing the linked list\n");
 		Node<T> prev = null;
 		Node<T> current = head;
 		Node<T> next = null;
+		if (current == null) {
+			throw new SinglyLinkedListException(); 
+		}
 		while (current != null) {
 			next = current.getNextRef();
 			current.setNextRef(prev);
@@ -85,7 +88,9 @@ public class SinglyLinkedListImpl<T> implements SinglyLinkedList<T> {
 	}
 
 	public static void main(final String a[]) {
-		SinglyLinkedList<Integer> sl = new SinglyLinkedListImpl<Integer>();
+		try{
+			SinglyLinkedList<Integer> sl = new SinglyLinkedListImpl<Integer>();
+		
 		sl.add(3);
 		sl.add(32);
 		sl.add(54);
@@ -95,6 +100,11 @@ public class SinglyLinkedListImpl<T> implements SinglyLinkedList<T> {
 		System.out.println();
 		sl.reverse();
 		sl.traverse();
+		}catch(ObjectNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (SinglyLinkedListException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	@Override

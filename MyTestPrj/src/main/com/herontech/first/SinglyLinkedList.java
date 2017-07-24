@@ -4,9 +4,9 @@ public interface SinglyLinkedList<T> {
 
 	void add(T element);
 
-	void traverse();
+	void traverse() throws ObjectNotFoundException;
 
-	void reverse();
+	void reverse() throws SinglyLinkedListException;
 
 	boolean isEmpty();
 	
